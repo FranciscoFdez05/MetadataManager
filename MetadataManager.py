@@ -48,7 +48,67 @@ def verMetadatos(archivo):
         limpiar_pantalla()
 
 def modMetadata(archivo):
-    pass
+    if archivo:
+        limpiar_pantalla()
+        print("MODIFICAR METADATOS")
+                
+        print("\n ARCHIVO")
+        print("1. Nombre del archivo")                       # FileName
+
+        print("\n AUTORÍA Y SOFTWARE")
+        print("2. Autor o Creador")                          # Author, Artist, Creator
+        print("3. Título")                                   # Title
+        print("4. Software utilizado")                       # Software
+        print("5. Comentario")                               # Comment
+
+        print("\n FECHAS EXIF")
+        print("6. Fecha de creación (EXIF)")                 # CreateDate
+        print("7. Fecha de edición (EXIF)")                  # ModifyDate
+        print("8. Fecha original de la imagen")              # DateTimeOriginal
+
+        print("\n FECHAS DEL SISTEMA DE ARCHIVOS")
+        print("9. Fecha de creación en disco")               # FileCreateDate
+        print("10. Fecha del último acceso")                 # FileAccessDate
+        print("11. Fecha de modificación en disco")          # FileModifyDate
+
+        print("\n CÁMARA")
+        print("12. Modelo de cámara")                        # CameraModelName
+        print("13. Fabricante de cámara")                    # Make
+        print("14. Orientación")                             # Orientation
+        print("15. Resolución X")                            # XResolution
+        print("16. Resolución Y")                            # YResolution
+
+        print("\n GPS")
+        print("17. GPS Altitud")                             # GPSAltitude
+        print("18. GPS Latitud")                             # GPSLatitude
+        print("19. GPS Longitud")                            # GPSLongitude
+        print("20. Referencia Latitud (N/S)")                # GPSLatitudeRef
+        print("21. Referencia Longitud (E/W)")               # GPSLongitudeRef
+        print("22. Referencia Altitud (Sea Level)")          # GPSAltitudeRef
+
+        print("\n DATOS TÉCNICOS")
+        print("23. Tiempo de exposición")                    # ExposureTime
+        print("24. Número F (apertura)")                     # FNumber
+        print("25. ISO")                                     # ISO
+        print("26. Flash (sí/no)")                           # Flash
+        print("27. Longitud focal")                          # FocalLength
+        print("28. Espacio de color")                        # ColorSpace
+        print("29. Balance de blancos")                      # WhiteBalance
+        print("30. Zoom digital")                            # DigitalZoomRatio
+
+        print("\n OTROS")
+        print("31. ID única de imagen")                      # ImageUniqueID
+        print("32. País")                                    # Country
+        print("33. Código de país")                          # CountryCode
+        print("34. MCC Data")                                # MCC (requiere XMP personalizado o Comment)
+
+        input("\nENTER para continuar...")
+        
+        
+    else:
+        input("No has seleccionado ningún archivo. (ENTER para continuar)")
+        limpiar_pantalla()
+        
            
 def deleteMetadata(archivo):
     pass
@@ -57,23 +117,22 @@ def main():
     archivo = None
     while True:
         limpiar_pantalla()
-        print(r"""
-    [+]-----------------------------------------------------------[+] 
-    |    __  __ ______ _______       _____       _______           | 
-    |   |  \/  |  ____|__   __|/\   |  __ \   /\|__   __|/\        | 
-    |   | \  / | |__     | |  /  \  | |  | | /  \  | |  /  \       | 
-    |   | |\/| |  __|    | | / /\ \ | |  | |/ /\ \ | | / /\ \      | 
-    |   | |  | | |____   | |/ ____ \| |__| / ____ \| |/ ____ \     | 
-    |   |_|  |_|______|  |_/_/    \_\_____/_/ ___\_\_/_/__  \_\    |
-    |    __  __          _   _          __________________         | 
-    |   |  \/  |   /\   | \ | |   /\   / ____|  ____|  __ \        | 
-    |   | \  / |  /  \  |  \| |  /  \ | |  __| |__  | |__) |       | 
-    |   | |\/| | / /\ \ | . ` | / /\ \| | |_ |  __| |  _  /        | 
-    |   | |  | |/ ____ \| |\  |/ ____ \ |__| | |____| | \ \        | 
-    |   |_|  |_/_/    \_\_| \_/_/    \_\_____|______|_|  \_\       |
-    |                                                              |
-    |       github page : https://github.com/FARLOPITEC            | 
-    [+]-----------------------------------------------------------[+]
+        print("""\033[92m
+
+███╗   ███╗███████╗████████╗ █████╗ ██████╗  █████╗ ████████╗ █████╗ 
+████╗ ████║██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗
+██╔████╔██║█████╗     ██║   ███████║██║  ██║███████║   ██║   ███████║
+██║╚██╔╝██║██╔══╝     ██║   ██╔══██║██║  ██║██╔══██║   ██║   ██╔══██║
+██║ ╚═╝ ██║███████╗   ██║   ██║  ██║██████╔╝██║  ██║   ██║   ██║  ██║
+╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
+                                                                     
+███╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗        
+████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗       
+██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝       
+██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗       
+██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║       
+╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      
+       github page : https://github.com/FARLOPITEC \033[0m             
         """)
         print(f"Archivo seleccionado: {archivo if archivo else 'NULL'}\n")
         print("1. Seleccionar archivo")
