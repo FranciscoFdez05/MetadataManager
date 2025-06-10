@@ -80,6 +80,6 @@ Este software se proporciona con fines educativos y personales. **No me hago res
 
 ## 📜 Licencia
 ---
-📄 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles..  
+📄 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](../LICENSE) para más detalles..  
 
 **Developed with ❤️ by [Francisco](https://github.com/FARLOPITEC)**
