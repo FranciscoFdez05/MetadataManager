@@ -3,7 +3,7 @@
 
 Aplicación en Python que permite visualizar, modificar y eliminar metadatos de archivos mediante una interfaz por consola. Utiliza `exiftool` para manipular los metadatos y `tkinter` para seleccionar archivos desde una ventana emergente. Ideal para fotógrafos, desarrolladores o cualquier persona que necesite gestionar metadatos de forma sencilla.
 
-![](img/menu.png)
+![](../img/menu.png)
 
 ## ⚠️ Aviso legal
 
