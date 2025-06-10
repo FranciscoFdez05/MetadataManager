@@ -16,7 +16,7 @@ def selectFile():
 
 def viewMetadata(file):
     if file:
-        result = subprocess.run(["exiftool", file], capture_output=True, text=True)
+        result = subprocess.run(["exiftool", file], captureOutput=True, text=True)
         fullOutput = result.stdout + result.stderr
         print(fullOutput)
 
@@ -125,7 +125,7 @@ def modMetadata(file):
 
             result = subprocess.run(
                 ["exiftool", f"-{field}", file],
-                capture_output=True, text=True
+                captureOutput=True, text=True
             )
 
             output = result.stdout.strip()
