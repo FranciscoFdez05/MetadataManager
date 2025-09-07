@@ -184,7 +184,7 @@ def main():
 ██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗       
 ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║       
 ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      
-       github page : https://github.com/FARLOPITEC \033[0m             
+       github page : https://github.com/FranciscoFdez05/ \033[0m             
         """)
         print(f"\nSelected file: {file if file else 'NULL'}\n")
         print("1. Select file")
