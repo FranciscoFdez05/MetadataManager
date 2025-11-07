@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetadataManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82c962c3d9682a26967578c37fa8c83eb1f2871c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95028b6f5421fcc12b0fb8589107a8ce866be279")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetadataManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetadataManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Fran\\source\\repos\\MetadataManager\\MetadataManager\\",
+  "WorkspaceRootPath": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|c:\\users\\fran\\source\\repos\\metadatamanager\\metadatamanager\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|c:\\users\\franc\\source\\repos\\franciscofdez05\\metadatamanager\\metadatamanager\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|c:\\users\\franc\\source\\repos\\franciscofdez05\\metadatamanager\\metadatamanager\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97E1BD6F-C23B-4008-BEDC-70B2683201B1}|MetadataManager.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,13 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Fran\\source\\repos\\MetadataManager\\MetadataManager\\Form1.cs",
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Fran\\source\\repos\\MetadataManager\\MetadataManager\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAACgEAAAAAAAAAAAswEcEAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T22:23:48.779Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAjwGQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T23:03:54.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T18:24:38.794Z",
+              "WhenOpened": "2025-11-06T23:01:02.734Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
