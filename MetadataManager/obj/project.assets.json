@@ -77,23 +77,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\franc\\.nuget\\packages\\": {},
+    "C:\\Users\\Fran\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\MetadataManager.csproj",
+      "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\MetadataManager.csproj",
       "projectName": "MetadataManager",
-      "projectPath": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\MetadataManager.csproj",
-      "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\franc\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\obj\\",
+      "projectPath": "C:\\Users\\Fran\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\MetadataManager.csproj",
+      "packagesPath": "C:\\Users\\Fran\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fran\\source\\repos\\FranciscoFdez05\\MetadataManager\\MetadataManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -151,7 +151,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

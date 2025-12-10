@@ -87,7 +87,7 @@ namespace MetadataManager
         private void listViewArchives_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;    
+                e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
         }
