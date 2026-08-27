@@ -1,0 +1,58 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restaurar dependencias
+        run: dotnet restore
+
+      - name: Compilar
+        run: dotnet build --no-restore --configuration Release -warnaserror
+
+      - name: Ejecutar pruebas
+        run: dotnet test tests/MetadataManager.Tests/MetadataManager.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=test-results.trx"
+
+      - name: Publicar resultados de las pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/test-results.trx'
+
+  publish:
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publicar ejecutable único
+        run: dotnet publish MetadataManager.csproj -c Release -r win-x64 -p:PublishSingleFile=true -o publish
+
+      - name: Subir el ejecutable
+        uses: actions/upload-artifact@v4
+        with:
+          name: MetadataManager-win-x64
+          path: publish/MetadataManager.exe

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>MetadataManager</RootNamespace>
+    <AssemblyName>MetadataManager</AssemblyName>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationDefaultFont>Segoe UI, 9pt</ApplicationDefaultFont>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>MetadataManager</Product>
+    <Description>Lectura, edición y borrado de metadatos de archivos.</Description>
+    <Version>1.2.0</Version>
+    <Copyright>Copyright (c) Francisco</Copyright>
+    <NeutralLanguage>es</NeutralLanguage>
+  </PropertyGroup>
+
+  <!-- Publicación como ejecutable único que no necesita el runtime instalado. -->
+  <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <!-- El proyecto vive en la raíz del repositorio: las pruebas son un proyecto aparte. -->
+  <ItemGroup>
+    <Compile Remove="tests\**" />
+    <EmbeddedResource Remove="tests\**" />
+    <None Remove="tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="MetadataManager.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MetadataExtractor" Version="2.9.0" />
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
+  </ItemGroup>
+
+  <!-- Textos de la interfaz: Strings.resx es el idioma neutro (español) y Strings.en.resx el satélite inglés. -->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>MSBuild:Compile</Generator>
+      <StronglyTypedFileName>$(IntermediateOutputPath)Strings.Designer.cs</StronglyTypedFileName>
+      <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+      <StronglyTypedNamespace>MetadataManager.Resources</StronglyTypedNamespace>
+      <StronglyTypedClassName>Strings</StronglyTypedClassName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

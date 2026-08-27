@@ -1,3 +1,16 @@
-.vs/
+# Compilación
 bin/
 obj/
+[Dd]ebug/
+[Rr]elease/
+*.dll
+*.pdb
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+# Publicación
+publish/

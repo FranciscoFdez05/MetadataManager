@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AboutText" xml:space="preserve">
+    <value>MetadataManager {0}
+
+Read, edit and remove file metadata.
+Embedded metadata is read with MetadataExtractor and PDFs are processed with PDFsharp.
+Editing EXIF tags and cleaning less common formats require ExifTool.</value>
+  </data>
+  <data name="ButtonAccept" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CleanMore" xml:space="preserve">
+    <value>… and {0} more.</value>
+  </data>
+  <data name="CleanSummary" xml:space="preserve">
+    <value>Complete: {0} · Partial: {1} · Failed: {2}</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ColumnProperty" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="ColumnSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="ColumnType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ColumnValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ContextCollapseAll" xml:space="preserve">
+    <value>Collapse all</value>
+  </data>
+  <data name="ContextCopyValue" xml:space="preserve">
+    <value>Copy value</value>
+  </data>
+  <data name="ContextEditValue" xml:space="preserve">
+    <value>Edit value</value>
+  </data>
+  <data name="ContextExpandAll" xml:space="preserve">
+    <value>Expand all</value>
+  </data>
+  <data name="ContextMaps" xml:space="preserve">
+    <value>View in Google Maps</value>
+  </data>
+  <data name="ContextOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ContextOpenFolder" xml:space="preserve">
+    <value>Open file location</value>
+  </data>
+  <data name="DialogSaveMetadata" xml:space="preserve">
+    <value>Save metadata</value>
+  </data>
+  <data name="DialogSelectFiles" xml:space="preserve">
+    <value>Select files</value>
+  </data>
+  <data name="DialogSelectFolder" xml:space="preserve">
+    <value>Select a folder</value>
+  </data>
+  <data name="ErrorApply" xml:space="preserve">
+    <value>The change could not be applied</value>
+  </data>
+  <data name="ErrorClean" xml:space="preserve">
+    <value>Error while cleaning</value>
+  </data>
+  <data name="ErrorCopy" xml:space="preserve">
+    <value>The value could not be copied</value>
+  </data>
+  <data name="ErrorExport" xml:space="preserve">
+    <value>The metadata could not be saved</value>
+  </data>
+  <data name="ErrorOpen" xml:space="preserve">
+    <value>The item could not be opened</value>
+  </data>
+  <data name="ErrorOpenFolder" xml:space="preserve">
+    <value>The location could not be opened</value>
+  </data>
+  <data name="ErrorRead" xml:space="preserve">
+    <value>Metadata could not be read</value>
+  </data>
+  <data name="ExportBatchName" xml:space="preserve">
+    <value>metadata-report</value>
+  </data>
+  <data name="ExportSuffix" xml:space="preserve">
+    <value>-metadata</value>
+  </data>
+  <data name="FilterAllFiles" xml:space="preserve">
+    <value>All files (*.*)|*.*</value>
+  </data>
+  <data name="FilterExport" xml:space="preserve">
+    <value>CSV (*.csv)|*.csv|JSON (*.json)|*.json|Text (*.txt)|*.txt</value>
+  </data>
+  <data name="LabelFilter" xml:space="preserve">
+    <value>Filter:</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;About...</value>
+  </data>
+  <data name="MenuAddFiles" xml:space="preserve">
+    <value>&amp;Add files...</value>
+  </data>
+  <data name="MenuAddFolder" xml:space="preserve">
+    <value>Add &amp;folder...</value>
+  </data>
+  <data name="MenuAddFolderFiles" xml:space="preserve">
+    <value>Add files from a folder...</value>
+  </data>
+  <data name="MenuClean" xml:space="preserve">
+    <value>&amp;Clean metadata</value>
+  </data>
+  <data name="MenuClearList" xml:space="preserve">
+    <value>C&amp;lear list</value>
+  </data>
+  <data name="MenuDetectExifTool" xml:space="preserve">
+    <value>&amp;Detect ExifTool again</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Save metadata...</value>
+  </data>
+  <data name="MenuExportBatch" xml:space="preserve">
+    <value>Save metadata for the whole list...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Options...</value>
+  </data>
+  <data name="MenuRemove" xml:space="preserve">
+    <value>&amp;Remove from list</value>
+  </data>
+  <data name="MenuTools" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="MsgBusyOnExit" xml:space="preserve">
+    <value>An operation is in progress. Exit anyway?</value>
+  </data>
+  <data name="MsgCleanConfirm" xml:space="preserve">
+    <value>{0} file(s) will be processed.
+
+{1}
+
+{2}
+
+Continue?</value>
+  </data>
+  <data name="MsgCleanExifTool" xml:space="preserve">
+    <value>ExifTool will be used for a complete wipe.</value>
+  </data>
+  <data name="MsgCleanNoExifTool" xml:space="preserve">
+    <value>ExifTool is not installed: cleaning will use the built-in methods only (complete for JPEG, PNG, PDF and Office; timestamps only for the rest).</value>
+  </data>
+  <data name="MsgEmptyList" xml:space="preserve">
+    <value>The list is empty: there is nothing to export.</value>
+  </data>
+  <data name="MsgExifToolFound" xml:space="preserve">
+    <value>ExifTool available at: {0}</value>
+  </data>
+  <data name="MsgExifToolMissing" xml:space="preserve">
+    <value>ExifTool was not found. Install it and add it to the PATH, or copy exiftool.exe next to this application.</value>
+  </data>
+  <data name="MsgFolderEmpty" xml:space="preserve">
+    <value>The folder contains no files.</value>
+  </data>
+  <data name="MsgFolderScan" xml:space="preserve">
+    <value>{0} files were found in the folder. Add them all to the list?</value>
+  </data>
+  <data name="MsgModeBackup" xml:space="preserve">
+    <value>A .bak backup will be saved next to each file.</value>
+  </data>
+  <data name="MsgModeCopy" xml:space="preserve">
+    <value>The originals will be left untouched: a clean copy will be created next to each one.</value>
+  </data>
+  <data name="MsgModeOverwrite" xml:space="preserve">
+    <value>The original files will be overwritten irreversibly.</value>
+  </data>
+  <data name="MsgNothingToExport" xml:space="preserve">
+    <value>Select an item with metadata to save.</value>
+  </data>
+  <data name="MsgSelectFileToClean" xml:space="preserve">
+    <value>Select at least one file (folders have no metadata to clean).</value>
+  </data>
+  <data name="OptionsDate" xml:space="preserve">
+    <value>Normalisation date:</value>
+  </data>
+  <data name="OptionsGroupClean" xml:space="preserve">
+    <value>Cleaning</value>
+  </data>
+  <data name="OptionsGroupInterface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="OptionsInvalidDate" xml:space="preserve">
+    <value>The date must use the format yyyy-MM-dd HH:mm:ss.</value>
+  </data>
+  <data name="OptionsLanguage" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="OptionsLanguageAuto" xml:space="preserve">
+    <value>Automatic (system language)</value>
+  </data>
+  <data name="OptionsLanguageEn" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="OptionsLanguageEs" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="OptionsModeBackup" xml:space="preserve">
+    <value>Create a .bak backup</value>
+  </data>
+  <data name="OptionsModeCopy" xml:space="preserve">
+    <value>Keep the original and create a clean copy</value>
+  </data>
+  <data name="OptionsModeOverwrite" xml:space="preserve">
+    <value>Overwrite the original</value>
+  </data>
+  <data name="OptionsOutputMode" xml:space="preserve">
+    <value>Original files:</value>
+  </data>
+  <data name="OptionsPreserveOrientation" xml:space="preserve">
+    <value>Preserve image orientation</value>
+  </data>
+  <data name="OptionsResetDates" xml:space="preserve">
+    <value>Also normalise file system dates</value>
+  </data>
+  <data name="OptionsRestart" xml:space="preserve">
+    <value>The language change will take effect when the application restarts.</value>
+  </data>
+  <data name="OptionsShowThumbnail" xml:space="preserve">
+    <value>Show image preview</value>
+  </data>
+  <data name="OptionsUseExifTool" xml:space="preserve">
+    <value>Use ExifTool when available</value>
+  </data>
+  <data name="PreviewUnavailable" xml:space="preserve">
+    <value>No preview</value>
+  </data>
+  <data name="StatusAdded" xml:space="preserve">
+    <value>{0} item(s) added. Total: {1}.</value>
+  </data>
+  <data name="StatusApplying" xml:space="preserve">
+    <value>Applying “{0}”...</value>
+  </data>
+  <data name="StatusBadCoordinates" xml:space="preserve">
+    <value>The coordinates are not in a recognisable format.</value>
+  </data>
+  <data name="StatusCleanCancelled" xml:space="preserve">
+    <value>Cleaning cancelled.</value>
+  </data>
+  <data name="StatusCleanDone" xml:space="preserve">
+    <value>Cleaning finished. {0}</value>
+  </data>
+  <data name="StatusCleaning" xml:space="preserve">
+    <value>Cleaning {0} ({1}/{2})...</value>
+  </data>
+  <data name="StatusCopied" xml:space="preserve">
+    <value>Value copied to the clipboard.</value>
+  </data>
+  <data name="StatusExifToolFound" xml:space="preserve">
+    <value>ExifTool: available</value>
+  </data>
+  <data name="StatusExifToolMissing" xml:space="preserve">
+    <value>ExifTool: not found</value>
+  </data>
+  <data name="StatusExported" xml:space="preserve">
+    <value>Metadata saved to {0}.</value>
+  </data>
+  <data name="StatusExporting" xml:space="preserve">
+    <value>Reading file {0} of {1}...</value>
+  </data>
+  <data name="StatusFiltered" xml:space="preserve">
+    <value>{0} of {1} properties match “{2}”.</value>
+  </data>
+  <data name="StatusListCleared" xml:space="preserve">
+    <value>List cleared.</value>
+  </data>
+  <data name="StatusNoSelection" xml:space="preserve">
+    <value>Nothing selected.</value>
+  </data>
+  <data name="StatusNothingSelected" xml:space="preserve">
+    <value>No items are selected.</value>
+  </data>
+  <data name="StatusRead" xml:space="preserve">
+    <value>{0} properties read from {1}.</value>
+  </data>
+  <data name="StatusReadError" xml:space="preserve">
+    <value>Error reading metadata.</value>
+  </data>
+  <data name="StatusReading" xml:space="preserve">
+    <value>Reading metadata from {0}...</value>
+  </data>
+  <data name="StatusRemoved" xml:space="preserve">
+    <value>{0} item(s) removed from the list.</value>
+  </data>
+  <data name="StatusSkipped" xml:space="preserve">
+    <value> {0} skipped because they are not accessible.</value>
+  </data>
+  <data name="StatusUnavailable" xml:space="preserve">
+    <value>The selected item is no longer available.</value>
+  </data>
+  <data name="StatusUpdated" xml:space="preserve">
+    <value>“{0}” updated.</value>
+  </data>
+  <data name="StatusWelcome" xml:space="preserve">
+    <value>Drop files here or use “Add files”.</value>
+  </data>
+  <data name="TipAddFiles" xml:space="preserve">
+    <value>Add files to the list (Ctrl+O)</value>
+  </data>
+  <data name="TipClean" xml:space="preserve">
+    <value>Delete metadata from the selected files (Ctrl+L)</value>
+  </data>
+  <data name="TipEditable" xml:space="preserve">
+    <value>This value can be edited and will be written to the file.</value>
+  </data>
+  <data name="TipExifToolFound" xml:space="preserve">
+    <value>Full cleaning and tag editing are available.</value>
+  </data>
+  <data name="TipExifToolMissing" xml:space="preserve">
+    <value>Without ExifTool, cleaning is only complete for JPEG, PNG, PDF and Office files.</value>
+  </data>
+  <data name="TipExport" xml:space="preserve">
+    <value>Export the table to CSV, JSON or TXT (Ctrl+S)</value>
+  </data>
+  <data name="TipFilter" xml:space="preserve">
+    <value>Filter the properties shown</value>
+  </data>
+  <data name="TipRemove" xml:space="preserve">
+    <value>Remove the selected items from the list (Del)</value>
+  </data>
+  <data name="TitleAbout" xml:space="preserve">
+    <value>About MetadataManager</value>
+  </data>
+  <data name="TitleAddFolder" xml:space="preserve">
+    <value>Add files from a folder</value>
+  </data>
+  <data name="TitleClean" xml:space="preserve">
+    <value>Clean metadata</value>
+  </data>
+  <data name="TitleCleanResult" xml:space="preserve">
+    <value>Cleaning result</value>
+  </data>
+  <data name="TitleError" xml:space="preserve">
+    <value>MetadataManager</value>
+  </data>
+  <data name="TitleExifTool" xml:space="preserve">
+    <value>ExifTool</value>
+  </data>
+  <data name="TitleOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ToolAddFiles" xml:space="preserve">
+    <value>Add files</value>
+  </data>
+  <data name="ToolAddFolder" xml:space="preserve">
+    <value>Add folder</value>
+  </data>
+  <data name="ToolClean" xml:space="preserve">
+    <value>Clean metadata</value>
+  </data>
+  <data name="ToolExport" xml:space="preserve">
+    <value>Save metadata</value>
+  </data>
+  <data name="ToolOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ToolRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="DialogSelectExifTool" xml:space="preserve">
+    <value>Select the ExifTool executable</value>
+  </data>
+  <data name="FilterExifTool" xml:space="preserve">
+    <value>ExifTool (exiftool*.exe)|exiftool*.exe|Executables (*.exe)|*.exe|All files (*.*)|*.*</value>
+  </data>
+  <data name="MenuConnectExifTool" xml:space="preserve">
+    <value>&amp;Connect ExifTool...</value>
+  </data>
+  <data name="MsgExifToolConnected" xml:space="preserve">
+    <value>ExifTool {0} connected.
+
+{1}</value>
+  </data>
+  <data name="MsgExifToolDownload" xml:space="preserve">
+    <value>ExifTool was not found on this system.
+
+Do you want to open the download page? Once downloaded, connect it from Tools → Connect ExifTool...</value>
+  </data>
+  <data name="MsgExifToolInvalid" xml:space="preserve">
+    <value>The selected file does not respond like ExifTool.
+
+{0}</value>
+  </data>
+  <data name="StatusExifToolDisconnected" xml:space="preserve">
+    <value>ExifTool disconnected.</value>
+  </data>
+  <data name="StatusExifToolVersion" xml:space="preserve">
+    <value>ExifTool: {0}</value>
+  </data>
+  <data name="TipExifTool" xml:space="preserve">
+    <value>Connect or change the ExifTool executable</value>
+  </data>
+  <data name="TipExifToolConnect" xml:space="preserve">
+    <value>Click to connect ExifTool.</value>
+  </data>
+  <data name="ToolExifTool" xml:space="preserve">
+    <value>ExifTool</value>
+  </data>
+</root>
