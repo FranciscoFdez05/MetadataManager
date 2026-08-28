@@ -285,10 +285,25 @@ La edición de etiquetas EXIF y el borrado en formatos menos comunes requieren E
     <value>El cambio de idioma se aplicará al reiniciar la aplicación.</value>
   </data>
   <data name="OptionsShowThumbnail" xml:space="preserve">
-    <value>Mostrar la vista previa de la imagen</value>
+    <value>Mostrar la vista previa del archivo</value>
   </data>
   <data name="OptionsUseExifTool" xml:space="preserve">
     <value>Usar ExifTool cuando esté disponible</value>
+  </data>
+  <data name="PreviewBlocked" xml:space="preserve">
+    <value>Vista previa bloqueada por seguridad.
+
+Este archivo es ejecutable: haz clic aquí para mostrarla.</value>
+  </data>
+  <data name="PreviewConfirmMessage" xml:space="preserve">
+    <value>«{0}» es un ejecutable o un script.
+
+Para generar su vista previa, Windows tiene que abrir el archivo con el controlador de miniaturas asociado, que es código externo a esta aplicación.
+
+¿Quieres mostrar la vista previa de todas formas?</value>
+  </data>
+  <data name="PreviewConfirmTitle" xml:space="preserve">
+    <value>Vista previa de un ejecutable</value>
   </data>
   <data name="PreviewUnavailable" xml:space="preserve">
     <value>Sin vista previa</value>

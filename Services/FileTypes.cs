@@ -20,6 +20,17 @@ namespace MetadataManager.Services
             ".docx", ".docm", ".xlsx", ".xlsm", ".pptx", ".pptm"
         };
 
+        /// <summary>
+        /// Extensiones que Windows puede ejecutar. Previsualizarlas hace que el shell
+        /// abra el archivo con un controlador externo, así que se pide confirmación antes.
+        /// </summary>
+        public static readonly IReadOnlySet<string> ExecutableExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ".exe", ".dll", ".com", ".scr", ".sys", ".ocx", ".cpl", ".drv", ".efi", ".msi", ".msp", ".msix", ".appx",
+            ".bat", ".cmd", ".ps1", ".psm1", ".vbs", ".vbe", ".js", ".jse", ".wsf", ".wsh", ".hta", ".jar",
+            ".lnk", ".pif", ".reg", ".msc", ".inf", ".scf", ".url", ".gadget"
+        };
+
         private static readonly Dictionary<string, string> KnownTypes = new(StringComparer.OrdinalIgnoreCase)
         {
             [".jpg"] = "Imagen JPEG",
@@ -56,12 +67,45 @@ namespace MetadataManager.Services
             [".mp4"] = "Vídeo MP4",
             [".mov"] = "Vídeo QuickTime",
             [".avi"] = "Vídeo AVI",
-            [".mkv"] = "Vídeo Matroska"
+            [".mkv"] = "Vídeo Matroska",
+            [".exe"] = "Ejecutable de Windows",
+            [".dll"] = "Biblioteca DLL",
+            [".msi"] = "Instalador MSI",
+            [".bat"] = "Script por lotes",
+            [".cmd"] = "Script por lotes",
+            [".ps1"] = "Script de PowerShell",
+            [".lnk"] = "Acceso directo"
         };
 
         public static bool IsImage(string path) => ImageExtensions.Contains(Path.GetExtension(path));
 
         public static bool IsOpenXml(string path) => OpenXmlExtensions.Contains(Path.GetExtension(path));
+
+        /// <summary>
+        /// Ejecutable o script, ya sea por la extensión o por la cabecera del archivo.
+        /// La comprobación del contenido detecta también los ejecutables disfrazados de otra cosa.
+        /// </summary>
+        public static bool IsExecutable(string path)
+        {
+            if (ExecutableExtensions.Contains(Path.GetExtension(path))) return true;
+
+            try
+            {
+                if (!File.Exists(path)) return false;
+
+                using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+
+                byte[] header = new byte[2];
+                if (stream.Read(header, 0, header.Length) < 2) return false;
+
+                return header[0] == 0x4D && header[1] == 0x5A;   // MZ
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException)
+            {
+                // Si no se puede leer, se trata como ejecutable: es la opción prudente.
+                return true;
+            }
+        }
 
         /// <summary>Descripción legible del tipo de un fichero o directorio.</summary>
         public static string Describe(string path)
@@ -115,6 +159,7 @@ namespace MetadataManager.Services
             string[]? expected = detectedType switch
             {
                 "PDF" => new[] { ".pdf" },
+                "Ejecutable de Windows" => new[] { ".exe", ".dll", ".com", ".scr", ".sys", ".ocx", ".cpl", ".drv", ".efi", ".mun", ".msstyles", ".ax", ".node", ".tsp" },
                 "Jpeg" => new[] { ".jpg", ".jpeg", ".jpe" },
                 "Png" => new[] { ".png" },
                 "Gif" => new[] { ".gif" },
@@ -150,6 +195,7 @@ namespace MetadataManager.Services
                 return true;
             }
 
+            if (Starts(0x4D, 0x5A)) return "Ejecutable de Windows";                        // MZ
             if (Starts(0x25, 0x50, 0x44, 0x46)) return "PDF";                                  // %PDF
             if (Starts(0xD0, 0xCF, 0x11, 0xE0)) return "Documento OLE2 (Office 97-2003)";
             if (Starts(0x52, 0x61, 0x72, 0x21)) return "RAR";

@@ -16,7 +16,9 @@ sistema de archivos.
 - **Detección del formato real por los bytes de cabecera**, con aviso si la extensión no coincide
   con el contenido.
 - **Huella SHA-256** calculada en segundo plano y cancelable.
-- **Vista previa** de la imagen seleccionada, ya rotada según su orientación EXIF.
+- **Vista previa de casi cualquier archivo**: imágenes ya rotadas según su orientación EXIF,
+  miniatura de Windows para PDF, Office o vídeo, primeras líneas de los archivos de texto e icono
+  del tipo cuando no hay nada mejor. Los ejecutables y scripts esperan a que los autorices.
 - Filtro de propiedades, orden de la lista por nombre, tipo o tamaño, y exportación individual o
   **de toda la lista en un único informe**.
 

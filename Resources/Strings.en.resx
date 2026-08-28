@@ -285,10 +285,25 @@ Continue?</value>
     <value>The language change will take effect when the application restarts.</value>
   </data>
   <data name="OptionsShowThumbnail" xml:space="preserve">
-    <value>Show image preview</value>
+    <value>Show file preview</value>
   </data>
   <data name="OptionsUseExifTool" xml:space="preserve">
     <value>Use ExifTool when available</value>
+  </data>
+  <data name="PreviewBlocked" xml:space="preserve">
+    <value>Preview blocked for safety.
+
+This file is executable: click here to show it.</value>
+  </data>
+  <data name="PreviewConfirmMessage" xml:space="preserve">
+    <value>“{0}” is an executable or a script.
+
+To build its preview, Windows must open the file with the associated thumbnail handler, which is code outside this application.
+
+Show the preview anyway?</value>
+  </data>
+  <data name="PreviewConfirmTitle" xml:space="preserve">
+    <value>Executable preview</value>
   </data>
   <data name="PreviewUnavailable" xml:space="preserve">
     <value>No preview</value>

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +25,7 @@ namespace MetadataManager
     {
         private const string CoordinatesProperty = "Coordenadas";
         private const string HashProperty = "SHA-256";
-        private const int ThumbnailMaxSize = 480;
+        private const int PreviewMaxSize = 480;
 
         private static readonly Color EditableCellColor = Color.FromArgb(255, 251, 230);
         private static readonly Color CategoryBackColor = Color.FromArgb(238, 242, 248);
@@ -37,7 +38,14 @@ namespace MetadataManager
 
         private CancellationTokenSource? _loadCancellation;
         private CancellationTokenSource? _cleanCancellation;
-        private Image? _thumbnail;
+        private Image? _preview;
+        private string? _previewText;
+
+        /// <summary>Archivo cuya vista previa espera la autorización del usuario.</summary>
+        private string? _blockedPreviewPath;
+
+        /// <summary>Ejecutables que el usuario ya ha autorizado durante esta sesión.</summary>
+        private readonly HashSet<string> _allowedPreviews = new(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>Evita que los eventos de la rejilla reaccionen mientras la repintamos.</summary>
         private bool _suspendGridEvents;
@@ -601,7 +609,7 @@ namespace MetadataManager
                 RenderEntries();
                 SetStatus(string.Format(CultureInfo.CurrentCulture, Strings.StatusRead, _entries.Count, entry.DisplayName));
 
-                await UpdateThumbnailAsync(path, token).ConfigureAwait(true);
+                await UpdatePreviewAsync(path, token).ConfigureAwait(true);
                 if (File.Exists(path)) await AppendHashAsync(path, token).ConfigureAwait(true);
             }
             catch (OperationCanceledException)
@@ -645,7 +653,7 @@ namespace MetadataManager
         {
             _entries.Clear();
             RenderEntries();
-            SetThumbnail(null);
+            ClearPreview();
             SetStatus(Strings.StatusNoSelection);
         }
 
@@ -766,81 +774,111 @@ namespace MetadataManager
 
         #region Vista previa
 
-        private async Task UpdateThumbnailAsync(string path, CancellationToken token)
+        /// <summary>Tipografía de paso fijo para las vistas previas de texto.</summary>
+        private static readonly Font PreviewTextFont = new(FontFamily.GenericMonospace, 8.25f);
+
+        /// <summary>
+        /// Genera la vista previa del archivo seleccionado: imagen, texto, miniatura del shell
+        /// o icono del tipo. Los ejecutables quedan a la espera de que el usuario los autorice.
+        /// </summary>
+        private async Task UpdatePreviewAsync(string path, CancellationToken token)
         {
-            if (!_settings.ShowThumbnail || !FileTypes.IsImage(path))
+            if (!_settings.ShowThumbnail)
             {
-                SetThumbnail(null);
+                ClearPreview();
                 return;
             }
 
+            bool allowExecutable = _allowedPreviews.Contains(path);
+
             try
             {
-                Image? image = await Task.Run(() => CreateThumbnail(path), token).ConfigureAwait(true);
+                var result = await Task
+                    .Run(() => PreviewService.Create(path, PreviewMaxSize, allowExecutable, token), token)
+                    .ConfigureAwait(true);
 
                 if (token.IsCancellationRequested)
                 {
-                    image?.Dispose();
+                    result.Dispose();
                     return;
                 }
 
-                SetThumbnail(image);
+                SetPreview(result, path);
             }
             catch (OperationCanceledException)
             {
-                SetThumbnail(null);
+                // Se seleccionó otro archivo antes de terminar.
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ExternalException)
+            {
+                ClearPreview();
             }
         }
 
-        /// <summary>
-        /// Genera una miniatura ya rotada según la orientación EXIF, para no mostrarla tumbada.
-        /// </summary>
-        private static Image? CreateThumbnail(string path)
+        /// <summary>Pide permiso para previsualizar un ejecutable y, si se concede, la genera.</summary>
+        private async void OnPreviewClick(object? sender, EventArgs e)
         {
-            try
-            {
-                Bitmap thumbnail;
+            string? path = _blockedPreviewPath;
+            if (path is null) return;
 
-                using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                using (var source = Image.FromStream(stream))
-                {
-                    double scale = Math.Min(1.0, (double)ThumbnailMaxSize / Math.Max(source.Width, source.Height));
-                    int width = Math.Max(1, (int)(source.Width * scale));
-                    int height = Math.Max(1, (int)(source.Height * scale));
+            var answer = MessageBox.Show(
+                this,
+                string.Format(CultureInfo.CurrentCulture, Strings.PreviewConfirmMessage, Path.GetFileName(path)),
+                Strings.PreviewConfirmTitle,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
 
-                    thumbnail = new Bitmap(width, height);
+            if (answer != DialogResult.Yes) return;
 
-                    using var graphics = Graphics.FromImage(thumbnail);
-                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    graphics.DrawImage(source, 0, 0, width, height);
-                }
+            _allowedPreviews.Add(path);
 
-                var rotation = MetadataCleaner.GetRotation(MetadataCleaner.ReadOrientation(path));
-                if (rotation != RotateFlipType.RotateNoneFlipNone) thumbnail.RotateFlip(rotation);
+            // Entre la pregunta y la respuesta el usuario ha podido cambiar de archivo.
+            if (!string.Equals(SelectedFile?.Path, path, StringComparison.OrdinalIgnoreCase)) return;
 
-                return thumbnail;
-            }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or OutOfMemoryException)
-            {
-                return null;
-            }
+            await UpdatePreviewAsync(path, _loadCancellation?.Token ?? CancellationToken.None).ConfigureAwait(true);
         }
 
-        private void SetThumbnail(Image? image)
+        private void ClearPreview() => SetPreview(PreviewResult.None, null);
+
+        private void SetPreview(PreviewResult result, string? path)
         {
-            pictureThumbnail.Image = image;
-            _thumbnail?.Dispose();
-            _thumbnail = image;
+            pictureThumbnail.Image = result.Image;
+            _preview?.Dispose();
+            _preview = result.Image;
+            _previewText = result.Text;
+            _blockedPreviewPath = result.Kind == PreviewKind.Blocked ? path : null;
+
+            // Los iconos del shell son pequeños: ampliarlos los deja borrosos, así que solo se centran.
+            pictureThumbnail.SizeMode = result.Image is not null &&
+                result.Image.Width <= pictureThumbnail.ClientSize.Width &&
+                result.Image.Height <= pictureThumbnail.ClientSize.Height
+                    ? PictureBoxSizeMode.CenterImage
+                    : PictureBoxSizeMode.Zoom;
+
+            pictureThumbnail.Cursor = _blockedPreviewPath is null ? Cursors.Default : Cursors.Hand;
             pictureThumbnail.Invalidate();
         }
 
-        private void OnThumbnailPaint(object? sender, PaintEventArgs e)
+        /// <summary>Dibuja el texto de la vista previa cuando no hay imagen que mostrar.</summary>
+        private void OnPreviewPaint(object? sender, PaintEventArgs e)
         {
             if (pictureThumbnail.Image is not null) return;
 
-            TextRenderer.DrawText(e.Graphics, Strings.PreviewUnavailable, Font,
-                pictureThumbnail.ClientRectangle, SystemColors.GrayText,
-                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            var bounds = Rectangle.Inflate(pictureThumbnail.ClientRectangle, -6, -6);
+
+            if (!string.IsNullOrEmpty(_previewText))
+            {
+                TextRenderer.DrawText(e.Graphics, _previewText, PreviewTextFont, bounds, SystemColors.WindowText,
+                    TextFormatFlags.Left | TextFormatFlags.Top | TextFormatFlags.NoPrefix | TextFormatFlags.WordBreak);
+                return;
+            }
+
+            string message = _blockedPreviewPath is null ? Strings.PreviewUnavailable : Strings.PreviewBlocked;
+
+            TextRenderer.DrawText(e.Graphics, message, Font, bounds, SystemColors.GrayText,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter |
+                TextFormatFlags.WordBreak | TextFormatFlags.NoPrefix);
         }
 
         #endregion
@@ -1385,7 +1423,7 @@ namespace MetadataManager
             SettingsService.Save(_settings);
 
             pictureThumbnail.Visible = _settings.ShowThumbnail;
-            if (!_settings.ShowThumbnail) SetThumbnail(null);
+            if (!_settings.ShowThumbnail) ClearPreview();
 
             _ = LoadSelectedMetadataAsync();
         }

@@ -11,7 +11,7 @@ namespace MetadataManager
                 components?.Dispose();
                 _loadCancellation?.Dispose();
                 _cleanCancellation?.Dispose();
-                _thumbnail?.Dispose();
+                _preview?.Dispose();
             }
 
             base.Dispose(disposing);
@@ -432,7 +432,8 @@ namespace MetadataManager
             pictureThumbnail.SizeMode = PictureBoxSizeMode.Zoom;
             pictureThumbnail.TabIndex = 1;
             pictureThumbnail.TabStop = false;
-            pictureThumbnail.Paint += OnThumbnailPaint;
+            pictureThumbnail.Paint += OnPreviewPaint;
+            pictureThumbnail.Click += OnPreviewClick;
             //
             // listContextMenu
             //
