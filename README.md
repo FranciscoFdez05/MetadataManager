@@ -59,7 +59,7 @@ sistema de archivos.
 ### Interfaz
 - Español e inglés, seleccionables en las opciones.
 - Preferencias persistentes (tamaño de ventana, divisor, última carpeta, modo de limpieza, fecha de
-  normalización).
+  normalización), guardadas en `%APPDATA%\MetadataManager\settings.ini`, editable a mano.
 - Arrastrar y soltar, selección múltiple, menús contextuales, apertura de coordenadas en Google Maps
   y barra de estado con el progreso de cada operación.
 
@@ -79,7 +79,7 @@ sistema de archivos.
 dotnet build                                  # compilación
 dotnet run                                    # ejecución
 dotnet run -- "C:\ruta\foto.jpg"              # abre la aplicación con archivos ya cargados
-dotnet test tests/MetadataManager.Tests       # 145 pruebas automatizadas
+dotnet test tests/MetadataManager.Tests       # 163 pruebas automatizadas
 
 # Ejecutable único que no requiere el runtime de .NET
 dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true
@@ -101,7 +101,8 @@ dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true
 | `Services/ExifTool.cs`, `ExifWritableTags.cs` | Herramienta externa y etiquetas escribibles. |
 | `Services/MetadataExporter.cs` | Exportación individual y por lotes a CSV, JSON y TXT. |
 | `Services/SafeFileWriter.cs` | Sustitución atómica del contenido de un archivo. |
-| `Services/AppSettings.cs`, `Localization.cs`, `Glyphs.cs`, `FileTypes.cs` | Preferencias, idioma, iconos y tipos. |
+| `Services/AppSettings.cs`, `Localization.cs`, `Glyphs.cs`, `FileTypes.cs` | Preferencias (.ini), idioma, iconos y tipos. |
+| `Services/FileColumnLayout.cs` | Reparto de anchos de las columnas de la lista de archivos. |
 | `Resources/Strings*.resx` | Textos de la interfaz (español neutro e inglés). |
 | `tests/MetadataManager.Tests/` | Pruebas con xUnit de toda la capa de servicios. |
 

@@ -374,7 +374,7 @@ namespace MetadataManager
             splitContainer.Panel1.Controls.Add(listViewFiles);
             splitContainer.Panel1.Controls.Add(pictureThumbnail);
             splitContainer.Panel1.Padding = new Padding(8, 8, 4, 8);
-            splitContainer.Panel1MinSize = 220;
+            splitContainer.Panel1MinSize = 250;
             splitContainer.Panel2.Controls.Add(dataGridViewMetadata);
             splitContainer.Panel2.Padding = new Padding(4, 8, 8, 8);
             splitContainer.Panel2MinSize = 320;
@@ -404,6 +404,8 @@ namespace MetadataManager
             listViewFiles.DragEnter += OnFilesDragEnter;
             listViewFiles.DragDrop += OnFilesDragDrop;
             listViewFiles.KeyDown += OnFilesKeyDown;
+            listViewFiles.Resize += OnFilesResize;
+            listViewFiles.ColumnWidthChanging += OnFilesColumnWidthChanging;
             //
             // columnName
             //
@@ -479,7 +481,7 @@ namespace MetadataManager
             dataGridViewMetadata.AllowUserToAddRows = false;
             dataGridViewMetadata.AllowUserToDeleteRows = false;
             dataGridViewMetadata.AllowUserToResizeRows = false;
-            dataGridViewMetadata.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewMetadata.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewMetadata.BackgroundColor = SystemColors.Window;
             dataGridViewMetadata.BorderStyle = BorderStyle.FixedSingle;
             dataGridViewMetadata.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -505,6 +507,7 @@ namespace MetadataManager
             //
             // columnProperty
             //
+            columnProperty.FillWeight = 32F;
             columnProperty.HeaderText = "Propiedad";
             columnProperty.MinimumWidth = 120;
             columnProperty.Name = "columnProperty";
@@ -513,6 +516,7 @@ namespace MetadataManager
             //
             // columnValue
             //
+            columnValue.FillWeight = 68F;
             columnValue.HeaderText = "Valor";
             columnValue.MinimumWidth = 120;
             columnValue.Name = "columnValue";

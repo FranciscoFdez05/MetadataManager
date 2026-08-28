@@ -195,21 +195,99 @@ public class SettingsTests
     }
 
     [Fact]
-    public void Settings_survive_a_serialisation_round_trip()
+    public void Settings_survive_an_ini_round_trip()
     {
         var settings = new AppSettings
         {
             Language = "en",
+            NormalizationDate = "2010-05-04 03:02:01",
             OutputMode = CleanOutputMode.Copy,
+            PreserveOrientation = false,
+            ResetFileDates = false,
+            UseExifTool = false,
+            ExifToolPath = @"D:\herramientas\exiftool.exe",
+            ShowThumbnail = false,
+            WindowWidth = 1234,
+            WindowHeight = 777,
+            WindowMaximized = true,
             SplitterDistance = 512,
             LastFolder = @"C:\fotos"
         };
 
-        var restored = JsonSerializer.Deserialize<AppSettings>(JsonSerializer.Serialize(settings))!;
+        var restored = SettingsIni.Read(SettingsIni.Write(settings));
 
         Assert.Equal("en", restored.Language);
+        Assert.Equal("2010-05-04 03:02:01", restored.NormalizationDate);
         Assert.Equal(CleanOutputMode.Copy, restored.OutputMode);
+        Assert.False(restored.PreserveOrientation);
+        Assert.False(restored.ResetFileDates);
+        Assert.False(restored.UseExifTool);
+        Assert.Equal(@"D:\herramientas\exiftool.exe", restored.ExifToolPath);
+        Assert.False(restored.ShowThumbnail);
+        Assert.Equal(1234, restored.WindowWidth);
+        Assert.Equal(777, restored.WindowHeight);
+        Assert.True(restored.WindowMaximized);
         Assert.Equal(512, restored.SplitterDistance);
         Assert.Equal(@"C:\fotos", restored.LastFolder);
+    }
+
+    [Fact]
+    public void The_ini_is_written_with_sections()
+    {
+        string ini = SettingsIni.Write(new AppSettings());
+
+        Assert.Contains("[General]", ini);
+        Assert.Contains("[Limpieza]", ini);
+        Assert.Contains("[ExifTool]", ini);
+        Assert.Contains("[Ventana]", ini);
+        Assert.Contains("OutputMode=Backup", ini);
+        Assert.Contains("ShowThumbnail=true", ini);
+    }
+
+    [Fact]
+    public void Comments_and_unknown_keys_are_ignored()
+    {
+        var restored = SettingsIni.Read(
+            "; un comentario\n# otro comentario\n[General]\nLanguage=en\nInventada=lo que sea\n");
+
+        Assert.Equal("en", restored.Language);
+        Assert.Equal(new AppSettings().OutputMode, restored.OutputMode);
+    }
+
+    [Fact]
+    public void Broken_values_keep_the_defaults()
+    {
+        var defaults = new AppSettings();
+        var restored = SettingsIni.Read(
+            "[Ventana]\nWidth=ancho\nMaximized=quizas\n[Limpieza]\nOutputMode=Inventado\nNormalizationDate=ayer\n");
+
+        Assert.Equal(defaults.WindowWidth, restored.WindowWidth);
+        Assert.Equal(defaults.WindowMaximized, restored.WindowMaximized);
+        Assert.Equal(defaults.OutputMode, restored.OutputMode);
+        Assert.Equal(defaults.NormalizationDate, restored.NormalizationDate);
+    }
+
+    [Fact]
+    public void An_empty_path_is_read_as_no_value()
+    {
+        var restored = SettingsIni.Read("[ExifTool]\nExifToolPath=\n[General]\nLastFolder=   \n");
+
+        Assert.Null(restored.ExifToolPath);
+        Assert.Null(restored.LastFolder);
+    }
+
+    [Fact]
+    public void A_value_may_contain_equal_signs()
+    {
+        var restored = SettingsIni.Read(@"[General]" + "\n" + @"LastFolder=C:\fotos\a=b");
+
+        Assert.Equal(@"C:\fotos\a=b", restored.LastFolder);
+    }
+
+    [Fact]
+    public void The_settings_file_is_an_ini()
+    {
+        Assert.EndsWith("settings.ini", SettingsService.FilePath);
+        Assert.EndsWith("settings.json", SettingsService.LegacyFilePath);
     }
 }

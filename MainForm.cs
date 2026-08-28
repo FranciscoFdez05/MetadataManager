@@ -27,6 +27,12 @@ namespace MetadataManager
         private const string HashProperty = "SHA-256";
         private const int PreviewMaxSize = 480;
 
+        /// <summary>LVM_SCROLL: desplaza el contenido de un ListView.</summary>
+        private const int LvmScroll = 0x1000 + 20;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int message, IntPtr wParam, IntPtr lParam);
+
         private static readonly Color EditableCellColor = Color.FromArgb(255, 251, 230);
         private static readonly Color CategoryBackColor = Color.FromArgb(238, 242, 248);
         private static readonly Color CategoryForeColor = Color.FromArgb(30, 58, 110);
@@ -52,6 +58,9 @@ namespace MetadataManager
 
         private bool _isBusy;
         private string? _editingOriginalValue;
+        /// <summary>Evita que el reparto de columnas se re-dispare a sí mismo.</summary>
+        private bool _fittingFileColumns;
+
         private int _sortColumn = -1;
         private bool _sortAscending = true;
 
@@ -112,6 +121,7 @@ namespace MetadataManager
             base.OnShown(e);
 
             RestoreSplitterDistance();
+            FitFileColumns();
 
             if (_initialPaths.Length > 0) AddPaths(_initialPaths);
         }
@@ -426,6 +436,68 @@ namespace MetadataManager
             item.SubItems[1].Text = FileTypes.Describe(entry.Path);
             item.SubItems[2].Text = FileTypes.FormatCompactSize(GetLength(entry));
             item.ToolTipText = entry.Path;
+        }
+
+        /// <summary>
+        /// Reparte todo el ancho visible de la lista entre las tres columnas. El total nunca
+        /// supera el ancho del control: sin barra horizontal, ninguna columna puede quedar fuera.
+        /// </summary>
+        private void FitFileColumns()
+        {
+            if (_fittingFileColumns) return;
+
+            int available = listViewFiles.ClientSize.Width;
+            if (available <= 0) return;
+
+            ApplyFileColumnWidths(FileColumnLayout.Distribute(available));
+        }
+
+        private void OnFilesResize(object? sender, EventArgs e) => FitFileColumns();
+
+        /// <summary>
+        /// Las cabeceras de la lista no se arrastran: los anchos los decide <see cref="FitFileColumns"/>
+        /// con el espacio disponible, así que un ajuste manual solo podría dejar columnas escondidas.
+        /// </summary>
+        private void OnFilesColumnWidthChanging(object? sender, ColumnWidthChangingEventArgs e)
+        {
+            if (_fittingFileColumns) return;
+
+            e.NewWidth = listViewFiles.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
+
+        /// <param name="widths">Anchos calculados por <see cref="FileColumnLayout"/>: nombre, tipo y tamaño.</param>
+        private void ApplyFileColumnWidths(int[] widths)
+        {
+            if (_fittingFileColumns) return;
+
+            _fittingFileColumns = true;
+            listViewFiles.BeginUpdate();
+
+            try
+            {
+                columnName.Width = widths[0];
+                columnType.Width = widths[1];
+                columnSize.Width = widths[2];
+            }
+            finally
+            {
+                listViewFiles.EndUpdate();
+                ScrollFileListToStart();
+                _fittingFileColumns = false;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista al extremo izquierdo: si alguna vez quedó desplazada,
+        /// las primeras columnas seguirían escondidas aunque ya vuelvan a caber.
+        /// </summary>
+        private void ScrollFileListToStart()
+        {
+            if (!listViewFiles.IsHandleCreated) return;
+
+            // LVM_SCROLL recorta solo el desplazamiento sobrante, así que basta con pasarse.
+            SendMessage(listViewFiles.Handle, LvmScroll, new IntPtr(-listViewFiles.Width * 4), IntPtr.Zero);
         }
 
         private void OnFilesColumnClick(object? sender, ColumnClickEventArgs e)
