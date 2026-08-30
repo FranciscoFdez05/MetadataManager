@@ -6,6 +6,8 @@ Aplicación de escritorio (WinForms, .NET 8) para **leer, editar, exportar y eli
 de archivos: EXIF de fotografías, propiedades de documentos de Office y PDF, e información del
 sistema de archivos.
 
+![](img/main.png)
+
 ## Características
 
 ### Lectura
