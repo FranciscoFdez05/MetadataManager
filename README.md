@@ -2,7 +2,10 @@
 
 # MetadataManager
 
-[![build](https://github.com/FranciscoFdez05/MetadataManager/actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/FranciscoFdez05/MetadataManager/build.yml?branch=main&label=CI&logo=github)](../../actions/workflows/build.yml)
+[![versión](https://img.shields.io/badge/versi%C3%B3n-v2.0.0-blue)](CHANGELOG.md)
+[![.NET](https://img.shields.io/badge/.NET-10-512BD4)](https://dotnet.microsoft.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 Aplicación de escritorio (WinForms, .NET 10) para **leer, editar, exportar y eliminar** los metadatos
 de archivos: EXIF de fotografías, propiedades de documentos de Office y PDF, e información del
