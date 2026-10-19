@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generado a partir de una tabla única: mantener las claves sincronizadas entre idiomas. -->
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryFile" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="CategorySummary" xml:space="preserve">
+    <value>Resumen</value>
+  </data>
+  <data name="CategoryStatus" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="CategoryContents" xml:space="preserve">
+    <value>Contenido</value>
+  </data>
+  <data name="CategoryError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="CategoryQuickEdit" xml:space="preserve">
+    <value>Edición rápida</value>
+  </data>
+  <data name="PropertyAvailability" xml:space="preserve">
+    <value>Disponibilidad</value>
+  </data>
+  <data name="PropertyName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PropertyPath" xml:space="preserve">
+    <value>Ruta</value>
+  </data>
+  <data name="PropertyType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="PropertyExtension" xml:space="preserve">
+    <value>Extensión</value>
+  </data>
+  <data name="PropertySize" xml:space="preserve">
+    <value>Tamaño</value>
+  </data>
+  <data name="PropertyCreated" xml:space="preserve">
+    <value>Fecha de creación</value>
+  </data>
+  <data name="PropertyModified" xml:space="preserve">
+    <value>Fecha de modificación</value>
+  </data>
+  <data name="PropertyAccessed" xml:space="preserve">
+    <value>Último acceso</value>
+  </data>
+  <data name="PropertyAttributes" xml:space="preserve">
+    <value>Atributos</value>
+  </data>
+  <data name="PropertyReadOnly" xml:space="preserve">
+    <value>Solo lectura</value>
+  </data>
+  <data name="PropertyActualType" xml:space="preserve">
+    <value>Tipo real (contenido)</value>
+  </data>
+  <data name="PropertyWarning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="PropertyFiles" xml:space="preserve">
+    <value>Ficheros</value>
+  </data>
+  <data name="PropertySubfolders" xml:space="preserve">
+    <value>Subcarpetas</value>
+  </data>
+  <data name="PropertyFolderRead" xml:space="preserve">
+    <value>Lectura del directorio</value>
+  </data>
+  <data name="PropertyFileInfo" xml:space="preserve">
+    <value>Información del fichero</value>
+  </data>
+  <data name="PropertyResolution" xml:space="preserve">
+    <value>Resolución</value>
+  </data>
+  <data name="PropertyPixelFormat" xml:space="preserve">
+    <value>Formato de píxel</value>
+  </data>
+  <data name="PropertyEmbedded" xml:space="preserve">
+    <value>Metadatos incrustados</value>
+  </data>
+  <data name="PropertyReadError" xml:space="preserve">
+    <value>Error de lectura</value>
+  </data>
+  <data name="PropertyCameraMake" xml:space="preserve">
+    <value>Cámara (marca)</value>
+  </data>
+  <data name="PropertyCameraModel" xml:space="preserve">
+    <value>Cámara (modelo)</value>
+  </data>
+  <data name="PropertyCaptureDate" xml:space="preserve">
+    <value>Fecha de captura</value>
+  </data>
+  <data name="PropertyExposure" xml:space="preserve">
+    <value>Tiempo de exposición</value>
+  </data>
+  <data name="PropertyAperture" xml:space="preserve">
+    <value>Apertura</value>
+  </data>
+  <data name="PropertyCoordinates" xml:space="preserve">
+    <value>Coordenadas</value>
+  </data>
+  <data name="PropertyTitle" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="PropertyAuthor" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="PropertyDescription" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="PropertyCopyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="PropertyKeywords" xml:space="preserve">
+    <value>Palabras clave</value>
+  </data>
+  <data name="PropertyComment" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="ValueYes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="ValueNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ValuePathUnavailable" xml:space="preserve">
+    <value>La ruta ya no existe o no es accesible</value>
+  </data>
+  <data name="ValueContentsInaccessible" xml:space="preserve">
+    <value>Contenido no accesible: {0}</value>
+  </data>
+  <data name="ValueExtensionMismatch" xml:space="preserve">
+    <value>La extensión {0} no corresponde al contenido detectado ({1}).</value>
+  </data>
+  <data name="ValueNoEmbeddedMetadata" xml:space="preserve">
+    <value>El formato no contiene metadatos legibles</value>
+  </data>
+  <data name="TypeFolder" xml:space="preserve">
+    <value>Carpeta</value>
+  </data>
+  <data name="TypeNoExtension" xml:space="preserve">
+    <value>Sin extensión</value>
+  </data>
+  <data name="TypeJpegImage" xml:space="preserve">
+    <value>Imagen JPEG</value>
+  </data>
+  <data name="TypePngImage" xml:space="preserve">
+    <value>Imagen PNG</value>
+  </data>
+  <data name="TypeGifImage" xml:space="preserve">
+    <value>Imagen GIF</value>
+  </data>
+  <data name="TypeBmpImage" xml:space="preserve">
+    <value>Imagen BMP</value>
+  </data>
+  <data name="TypeTiffImage" xml:space="preserve">
+    <value>Imagen TIFF</value>
+  </data>
+  <data name="TypeWebpImage" xml:space="preserve">
+    <value>Imagen WebP</value>
+  </data>
+  <data name="TypeHeicImage" xml:space="preserve">
+    <value>Imagen HEIC</value>
+  </data>
+  <data name="TypeHeifImage" xml:space="preserve">
+    <value>Imagen HEIF</value>
+  </data>
+  <data name="TypeText" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="TypeArchive" xml:space="preserve">
+    <value>Archivo comprimido</value>
+  </data>
+  <data name="TypeMp3Audio" xml:space="preserve">
+    <value>Audio MP3</value>
+  </data>
+  <data name="TypeWavAudio" xml:space="preserve">
+    <value>Audio WAV</value>
+  </data>
+  <data name="TypeFlacAudio" xml:space="preserve">
+    <value>Audio FLAC</value>
+  </data>
+  <data name="TypeMp4Video" xml:space="preserve">
+    <value>Vídeo MP4</value>
+  </data>
+  <data name="TypeQuickTimeVideo" xml:space="preserve">
+    <value>Vídeo QuickTime</value>
+  </data>
+  <data name="TypeAviVideo" xml:space="preserve">
+    <value>Vídeo AVI</value>
+  </data>
+  <data name="TypeMatroskaVideo" xml:space="preserve">
+    <value>Vídeo Matroska</value>
+  </data>
+  <data name="TypeExecutable" xml:space="preserve">
+    <value>Ejecutable de Windows</value>
+  </data>
+  <data name="TypeDll" xml:space="preserve">
+    <value>Biblioteca DLL</value>
+  </data>
+  <data name="TypeMsi" xml:space="preserve">
+    <value>Instalador MSI</value>
+  </data>
+  <data name="TypeBatchScript" xml:space="preserve">
+    <value>Script por lotes</value>
+  </data>
+  <data name="TypePowerShellScript" xml:space="preserve">
+    <value>Script de PowerShell</value>
+  </data>
+  <data name="TypeShortcut" xml:space="preserve">
+    <value>Acceso directo</value>
+  </data>
+  <data name="TypeOle2Document" xml:space="preserve">
+    <value>Documento OLE2 (Office 97-2003)</value>
+  </data>
+  <data name="TypeOpenDocumentOrJar" xml:space="preserve">
+    <value>Documento OpenDocument o JAR</value>
+  </data>
+  <data name="TypeZipArchive" xml:space="preserve">
+    <value>Archivo comprimido ZIP</value>
+  </data>
+  <data name="EditInvalidPath" xml:space="preserve">
+    <value>Ruta no válida.</value>
+  </data>
+  <data name="EditItemMissing" xml:space="preserve">
+    <value>El elemento ya no existe en el disco.</value>
+  </data>
+  <data name="EditUseApplyTag" xml:space="preserve">
+    <value>Las etiquetas incrustadas se escriben con ApplyTagAsync.</value>
+  </data>
+  <data name="EditReadOnlyProperty" xml:space="preserve">
+    <value>Esta propiedad es de solo lectura.</value>
+  </data>
+  <data name="EditExifToolUnavailable" xml:space="preserve">
+    <value>ExifTool no está disponible: no se pueden escribir etiquetas incrustadas.</value>
+  </data>
+  <data name="EditCoordinatesFormat" xml:space="preserve">
+    <value>Usa el formato «latitud, longitud» (por ejemplo 40.416775, -3.703790) o deja el campo vacío para borrarlas.</value>
+  </data>
+  <data name="EditNameEmpty" xml:space="preserve">
+    <value>El nombre no puede estar vacío.</value>
+  </data>
+  <data name="EditNameInvalidChars" xml:space="preserve">
+    <value>El nombre contiene caracteres no permitidos.</value>
+  </data>
+  <data name="EditPathEmpty" xml:space="preserve">
+    <value>La ruta no puede estar vacía.</value>
+  </data>
+  <data name="EditPathNeedsName" xml:space="preserve">
+    <value>La ruta debe terminar en un nombre de archivo.</value>
+  </data>
+  <data name="EditPathInvalid" xml:space="preserve">
+    <value>Escribe una ruta completa válida, por ejemplo C:\fotos\imagen.jpg.</value>
+  </data>
+  <data name="EditDateInvalid" xml:space="preserve">
+    <value>Fecha no válida. Usa el formato yyyy-MM-dd HH:mm:ss.</value>
+  </data>
+  <data name="EditAttributesInvalid" xml:space="preserve">
+    <value>Atributos no válidos. Ejemplo: Archive, ReadOnly, Hidden.</value>
+  </data>
+  <data name="EditYesNo" xml:space="preserve">
+    <value>Escribe Sí o No.</value>
+  </data>
+  <data name="EditNoParent" xml:space="preserve">
+    <value>No se puede determinar la carpeta contenedora.</value>
+  </data>
+  <data name="EditNameExists" xml:space="preserve">
+    <value>Ya existe un elemento con ese nombre en la carpeta.</value>
+  </data>
+  <data name="EditTargetFolderMissing" xml:space="preserve">
+    <value>La carpeta de destino no existe: {0}</value>
+  </data>
+  <data name="EditTargetExists" xml:space="preserve">
+    <value>Ya existe un elemento en la ruta de destino.</value>
+  </data>
+  <data name="CleanFileMissing" xml:space="preserve">
+    <value>El archivo no existe.</value>
+  </data>
+  <data name="CleanCopyFailed" xml:space="preserve">
+    <value>No se pudo preparar la copia: {0}</value>
+  </data>
+  <data name="CleanCopySuffix" xml:space="preserve">
+    <value>_limpio</value>
+  </data>
+  <data name="CleanExifToolDone" xml:space="preserve">
+    <value>Metadatos eliminados con ExifTool.</value>
+  </data>
+  <data name="CleanExifToolFailed" xml:space="preserve">
+    <value>ExifTool falló ({0}). {1}</value>
+  </data>
+  <data name="CleanOfficeDone" xml:space="preserve">
+    <value>Propiedades del documento eliminadas.</value>
+  </data>
+  <data name="CleanUnsupported" xml:space="preserve">
+    <value>Sin soporte interno para {0}: solo se ajustaron las fechas. Instala ExifTool para eliminar sus metadatos.</value>
+  </data>
+  <data name="CleanPdfDone" xml:space="preserve">
+    <value>Propiedades del PDF y bloque XMP eliminados.</value>
+  </data>
+  <data name="CleanPdfFailed" xml:space="preserve">
+    <value>El PDF no se pudo reescribir ({0}): solo se ajustaron las fechas.</value>
+  </data>
+  <data name="CleanLosslessOriented" xml:space="preserve">
+    <value>Metadatos eliminados sin recomprimir la imagen (se conservó la orientación).</value>
+  </data>
+  <data name="CleanLossless" xml:space="preserve">
+    <value>Metadatos eliminados sin recomprimir la imagen.</value>
+  </data>
+  <data name="CleanImageUnsupported" xml:space="preserve">
+    <value>El formato de imagen no se pudo reescribir: solo se ajustaron las fechas.</value>
+  </data>
+  <data name="CleanReencoded" xml:space="preserve">
+    <value>Imagen regenerada sin metadatos (se ha recomprimido, puede perder calidad o animación).</value>
+  </data>
+  <data name="ExifToolPathMissing" xml:space="preserve">
+    <value>La ruta indicada no existe.</value>
+  </data>
+  <data name="ExifToolNoVersion" xml:space="preserve">
+    <value>El ejecutable no respondió a la opción -ver.</value>
+  </data>
+  <data name="ExifToolStartFailed" xml:space="preserve">
+    <value>No se pudo iniciar ExifTool.</value>
+  </data>
+  <data name="ExifToolTimeout" xml:space="preserve">
+    <value>ExifTool no respondió a tiempo y se canceló.</value>
+  </data>
+  <data name="ExifToolExitCode" xml:space="preserve">
+    <value>ExifTool devolvió el código {0}.</value>
+  </data>
+  <data name="ExportCsvHeader" xml:space="preserve">
+    <value>Categoria;Propiedad;Valor</value>
+  </data>
+  <data name="ExportBatchCsvHeader" xml:space="preserve">
+    <value>Archivo;Categoria;Propiedad;Valor</value>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>Metadatos de: {0}</value>
+  </data>
+  <data name="ExportBatchTitle" xml:space="preserve">
+    <value>Informe de metadatos</value>
+  </data>
+  <data name="ExportGenerated" xml:space="preserve">
+    <value>Generado: {0}</value>
+  </data>
+  <data name="ExportFileCount" xml:space="preserve">
+    <value>Archivos: {0}</value>
+  </data>
+</root>

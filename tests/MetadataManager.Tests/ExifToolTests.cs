@@ -7,6 +7,7 @@ namespace MetadataManager.Tests;
 /// Conexión manual con la herramienta externa. Las pruebas nunca dejan una ruta
 /// configurada: siempre restauran la detección automática al terminar.
 /// </summary>
+[Collection(ExifToolCollection.Name)]
 public class ExifToolTests : IDisposable
 {
     public void Dispose() => ExifTool.Configure(null);

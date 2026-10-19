@@ -14,3 +14,7 @@ obj/
 
 # Publicación
 publish/
+
+# Resultados de pruebas
+TestResults/
+*.trx

@@ -1,4 +1,4 @@
-using MetadataManager.Services;
+using MetadataManager.UI;
 using Xunit;
 
 namespace MetadataManager.Tests;

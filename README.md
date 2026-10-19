@@ -1,12 +1,14 @@
+<img src="docs/images/icon.png" alt="" width="96" align="right">
+
 # MetadataManager
 
 [![build](https://github.com/FranciscoFdez05/MetadataManager/actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml)
 
-Aplicación de escritorio (WinForms, .NET 8) para **leer, editar, exportar y eliminar** los metadatos
+Aplicación de escritorio (WinForms, .NET 10) para **leer, editar, exportar y eliminar** los metadatos
 de archivos: EXIF de fotografías, propiedades de documentos de Office y PDF, e información del
 sistema de archivos.
 
-![](img/main.png)
+![Ventana principal de MetadataManager](docs/images/main.png)
 
 ## Características
 
@@ -59,7 +61,8 @@ sistema de archivos.
   (por defecto) o **dejar el original intacto y generar una copia limpia**.
 
 ### Interfaz
-- Español e inglés, seleccionables en las opciones.
+- Español e inglés, seleccionables en las opciones. Todo se traduce: menús, nombres de las
+  propiedades, tipos de archivo, mensajes de error e informes exportados.
 - Preferencias persistentes (tamaño de ventana, divisor, última carpeta, modo de limpieza, fecha de
   normalización), guardadas en `%APPDATA%\MetadataManager\settings.ini`, editable a mano.
 - Arrastrar y soltar, selección múltiple, menús contextuales, apertura de coordenadas en Google Maps
@@ -67,7 +70,7 @@ sistema de archivos.
 
 ## Requisitos
 
-- Windows con [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0), o el
+- Windows con [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0), o el
   ejecutable autocontenido, que no necesita nada instalado.
 - Opcional: [ExifTool](https://exiftool.org/). La aplicación lo busca en la ruta que hayas conectado
   a mano, junto a su propio ejecutable y en el `PATH`. Si no lo tienes en el `PATH`, pulsa el botón
@@ -75,40 +78,87 @@ sistema de archivos.
   `exiftool.exe`: la ruta se valida ejecutándolo y se recuerda entre sesiones. Sin él no está
   disponible la edición de etiquetas EXIF.
 
+## Rendimiento
+
+- **ExifTool se mantiene abierto** (`-stay_open`) entre órdenes, con hasta 4 procesos a la vez:
+  cada edición o limpieza ya no paga el arranque del intérprete de Perl. En las pruebas, 10
+  ediciones seguidas pasan de unos 4,6 s a unos 60 ms.
+- Las operaciones largas (limpieza y exportación por lotes) se pueden **cancelar** desde la barra
+  de estado o con `Esc`; lo ya terminado se conserva.
+- Las rutas añadidas (arrastrar, diálogos, carpetas completas) se comprueban **en segundo plano** y
+  la lista se rellena de una sola vez; el tamaño de cada archivo se lee una vez y se reutiliza al
+  ordenar.
+- La limpieza procesa **varios archivos a la vez** (hasta 4, según los núcleos disponibles) y la
+  exportación por lotes **lee los metadatos en paralelo**, conservando el orden de la lista.
+- Los informes se escriben **directamente al disco**, sin montarlos completos en memoria.
+- La tabla de propiedades se construye en bloque, con estilos compartidos, y el filtro se aplica al
+  dejar de escribir.
+- El SHA-256 se calcula por bloques de 1 MB sin búfer intermedio, y la orientación EXIF se toma de
+  los datos ya cargados en lugar de volver a analizar el archivo.
+
 ## Compilar, probar y publicar
 
+Requiere el SDK de .NET 10 (`global.json` admite cualquier versión 10.0.x).
+
 ```bash
-dotnet build                                  # compilación
-dotnet run                                    # ejecución
-dotnet run -- "C:\ruta\foto.jpg"              # abre la aplicación con archivos ya cargados
-dotnet test tests/MetadataManager.Tests       # 163 pruebas automatizadas
+dotnet build                                            # compila la solución
+dotnet run --project src/MetadataManager                # ejecuta la aplicación
+dotnet run --project src/MetadataManager -- "C:\ruta\foto.jpg"   # abre con archivos ya cargados
+utaoto.jpg"   # abre con archivos ya cargados
+utaoto.jpg"   # abre con archivos ya cargados
+dotnet test                                             # 182 pruebas automatizadas
 
 # Ejecutable único que no requiere el runtime de .NET
-dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true
+dotnet publish src/MetadataManager -c Release -r win-x64 -p:PublishSingleFile=true
+```
+
+Las pruebas de integración con ExifTool real se omiten salvo que la variable `EXIFTOOL_PATH`
+apunte al ejecutable:
+
+```powershell
+$env:EXIFTOOL_PATH = 'C:\herramientas\exiftool.exe'; dotnet test
 ```
 
 ## Estructura del proyecto
 
-| Ruta | Contenido |
+```
+MetadataManager/
+├── src/
+│   ├── MetadataManager.Core/      Librería sin dependencias de Windows Forms
+│   │   ├── Models/                MetadataEntry (propiedad) y FileEntry (elemento de la lista)
+│   │   ├── Resources/             Textos de los servicios (español neutro e inglés)
+│   │   └── Services/              Lectura, edición, limpieza, exportación y vista previa
+│   └── MetadataManager/           Aplicación de escritorio (WinForms)
+│       ├── Forms/                 MainForm (dividido por áreas) y OptionsForm
+│       ├── UI/                    Iconos dibujados y reparto de columnas
+│       ├── Resources/             Textos de la interfaz (español neutro e inglés)
+│       └── Assets/                Icono de la aplicación
+├── tests/MetadataManager.Tests/   Pruebas con xUnit
+├── docs/images/                   Capturas e icono para la documentación
+├── Directory.Build.props          Configuración común y versión del producto
+├── Directory.Packages.props       Versiones centralizadas de los paquetes NuGet
+├── global.json                    SDK de .NET requerido
+└── .editorconfig                  Estilo de código
+```
+
+| Componente | Contenido |
 | --- | --- |
-| `Program.cs` | Punto de entrada, idioma y captura de errores no controlados. |
-| `MainForm.cs` | Ventana principal: orquesta lista, tabla y operaciones. |
-| `OptionsForm.cs` | Diálogo de preferencias. |
-| `Models/` | `MetadataEntry` (propiedad mostrada) y `FileEntry` (elemento de la lista). |
-| `Services/MetadataService.cs` | Lectura de metadatos y cálculo del SHA-256. |
+| `Services/MetadataService.cs` | Lectura de metadatos (individual y en paralelo) y cálculo del SHA-256. |
 | `Services/MetadataEditor.cs` | Validación y escritura de propiedades y etiquetas. |
 | `Services/MetadataCleaner.cs` | Estrategias de borrado, modos de salida y fechas. |
 | `Services/LosslessImageStripper.cs` | Borrado sin recomprimir en JPEG y PNG. |
 | `Services/OpenXmlCleaner.cs`, `PdfCleaner.cs` | Limpieza de documentos de Office y PDF. |
-| `Services/ExifTool.cs`, `ExifWritableTags.cs` | Herramienta externa y etiquetas escribibles. |
+| `Services/ExifTool.cs`, `ExifToolSession.cs` | Herramienta externa: pool de procesos persistentes y modo clásico. |
+| `Services/ExifWritableTags.cs` | Etiquetas que se pueden escribir de vuelta. |
 | `Services/MetadataExporter.cs` | Exportación individual y por lotes a CSV, JSON y TXT. |
+| `Services/FileScanner.cs` | Recorrido de carpetas y alta de rutas en la lista. |
 | `Services/SafeFileWriter.cs` | Sustitución atómica del contenido de un archivo. |
-| `Services/AppSettings.cs`, `Localization.cs`, `Glyphs.cs`, `FileTypes.cs` | Preferencias (.ini), idioma, iconos y tipos. |
-| `Services/FileColumnLayout.cs` | Reparto de anchos de las columnas de la lista de archivos. |
-| `Resources/Strings*.resx` | Textos de la interfaz (español neutro e inglés). |
-| `tests/MetadataManager.Tests/` | Pruebas con xUnit de toda la capa de servicios. |
+| `Services/PreviewService.cs`, `ShellThumbnail.cs` | Vista previa de imágenes, texto y miniaturas del shell. |
+| `Services/AppSettings.cs`, `Localization.cs`, `FileTypes.cs` | Preferencias (.ini), idioma y tipos de archivo. |
+| `Forms/MainForm.*.cs` | Ventana principal: `Files`, `Metadata`, `Preview`, `Editing`, `Cleaning` y `Export`. |
 
-La capa de servicios no depende de WinForms, por lo que puede reutilizarse y se prueba por separado.
+La lógica vive en `MetadataManager.Core`, que no depende de Windows Forms: se prueba por separado y
+podría reutilizarse desde otra interfaz o una herramienta de línea de comandos.
 
 ## Aviso
 

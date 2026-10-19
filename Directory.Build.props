@@ -1,0 +1,35 @@
+<Project>
+
+  <!-- Configuración común a todos los proyectos de la solución. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Comentarios XML ausentes o parciales (CS1591, CS1573): se documenta lo relevante, no cada miembro. -->
+    <NoWarn>$(NoWarn);CS1591;CS1573</NoWarn>
+    <Deterministic>true</Deterministic>
+    <!-- La documentación XML sirve al IDE; no se distribuye con el ejecutable. -->
+    <PublishDocumentationFile>false</PublishDocumentationFile>
+    <PublishReferencesDocumentationFiles>false</PublishReferencesDocumentationFiles>
+  </PropertyGroup>
+
+  <!-- Metadatos del producto, compartidos por la aplicación y la librería. -->
+  <PropertyGroup>
+    <Product>MetadataManager</Product>
+    <Version>2.0.0</Version>
+    <Authors>Francisco</Authors>
+    <Copyright>Copyright (c) Francisco</Copyright>
+    <NeutralLanguage>es</NeutralLanguage>
+    <RepositoryUrl>https://github.com/FranciscoFdez05/MetadataManager</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Compilaciones reproducibles en integración continua. -->
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>
