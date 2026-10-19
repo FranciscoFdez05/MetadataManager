@@ -1,11 +1,16 @@
-<img src="docs/images/icon.png" alt="" width="96" align="right">
+<p align="center">
+  <img src="docs/images/icon.png" alt="MetadataManager" width="128">
+</p>
 
-# MetadataManager
+<h1 align="center">MetadataManager</h1>
 
-[![CI](https://img.shields.io/github/actions/workflow/status/FranciscoFdez05/MetadataManager/build.yml?branch=main&label=CI&logo=github)](../../actions/workflows/build.yml)
-[![versión](https://img.shields.io/badge/versi%C3%B3n-v2.0.0-blue)](CHANGELOG.md)
-[![.NET](https://img.shields.io/badge/.NET-10-512BD4)](https://dotnet.microsoft.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+<p align="center">
+  <a href="https://github.com/FranciscoFdez05/MetadataManager/releases/latest"><img src="https://img.shields.io/github/v/release/FranciscoFdez05/MetadataManager?label=versi%C3%B3n" alt="Última versión"></a>
+  <a href="https://github.com/FranciscoFdez05/MetadataManager/actions/workflows/build.yml"><img src="https://github.com/FranciscoFdez05/MetadataManager/actions/workflows/build.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/.NET-10-512BD4" alt=".NET 10">
+  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 | 11">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License: MIT"></a>
+</p>
 
 Aplicación de escritorio (WinForms, .NET 10) para **leer, editar, exportar y eliminar** los metadatos
 de archivos: EXIF de fotografías, propiedades de documentos de Office y PDF, e información del
